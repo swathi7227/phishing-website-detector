@@ -22,16 +22,3 @@ Phishing Website Detector is a cybersecurity mini project that checks whether a 
 1. Install required libraries:
 ```bash
 python -m pip install flask tldextract pandas scikit-learn
-## Screenshots
-
-### Home Page
-![Home Page](screenshots/home.png)
-
-### Safe URL Result
-![Safe Result](screenshots/safe-result.png)
-
-### Phishing URL Result
-![Phishing Result](screenshots/phishing-result.png)
-
-### GitHub Repository
-![GitHub Repository](screenshots/github-repo.png)
