@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phishing Website Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #dbeafe, #fce7f3, #dcfce7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 760px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            font-size: 36px;
+        }
+
+        .subtitle {
+            color: #475569;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        input {
+            width: 90%;
+            padding: 16px;
+            border: 2px solid #bfdbfe;
+            border-radius: 14px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #60a5fa;
+            box-shadow: 0 0 10px rgba(96,165,250,0.4);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(37,99,235,0.35);
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 22px;
+            border-radius: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .safe {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .danger {
+            color: #dc2626;
+            font-weight: bold;
+        }
+
+        ul {
+            text-align: left;
+            display: inline-block;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .info {
+            margin-top: 30px;
+            text-align: left;
+            background: linear-gradient(135deg, #ecfeff, #f0fdf4);
+            padding: 22px;
+            border-left: 6px solid #38bdf8;
+            border-radius: 16px;
+            color: #334155;
+        }
+
+        .info h3 {
+            color: #0f766e;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="badge">Cybersecurity Mini Project</div>
+
+    <h1>🔐 Phishing Website Detector</h1>
+    <p class="subtitle">
+        Enter a website URL and check whether it looks safe or suspicious.
+    </p>
+
+    <form method="POST">
+        <input type="text" name="url" placeholder="Example: https://www.google.com" required>
+        <br>
+        <button type="submit">🔎 Check URL</button>
+    </form>
+
+    {% if result %}
+    <div class="result-box">
+        {% if result == "Safe" %}
+            <h2 class="safe">✅ Result: {{ result }}</h2>
+        {% else %}
+            <h2 class="danger">⚠️ Result: {{ result }}</h2>
+        {% endif %}
+
+        <h3>Detection Reasons</h3>
+        {% if reasons %}
+            <ul>
+                {% for reason in reasons %}
+                    <li>{{ reason }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No suspicious signs found.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="info">
+        <h3>How does this detector work?</h3>
+        <p>
+            This tool checks URL features like HTTPS usage, suspicious keywords,
+            long URL length, IP address usage, special symbols, and unusual domain patterns.
+        </p>
+    </div>
+
+    <p class="footer">Minor Project | Cybersecurity & Ethical Hacking</p>
+</div>
+
+</body>
+</html>
